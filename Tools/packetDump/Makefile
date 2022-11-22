@@ -1,7 +1,7 @@
 all : pcapDump
 
 pcapDump : parse.o come_on_packet.o main.o
-	g++ -g -std=c++14 -o pcap_exe main.o come_on_packet.o parse.o -lpcap
+	g++ -g -std=c++14 -o pcapDump main.o come_on_packet.o parse.o -lpcap
 
 parse.o : parse.h
 	g++ -g -c -std=c++14 -o parse.o parse.cpp
