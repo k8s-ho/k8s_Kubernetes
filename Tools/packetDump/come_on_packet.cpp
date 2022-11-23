@@ -48,7 +48,7 @@ void come_on_packet(parse *ps)
                         //cout << " [ TCP Header] " << endl;
                         //cout<<" [*] Src TCP Port : "<<ntohs(tcph->source)<<endl;
                         //cout<<" [*] Dst TCP Port : "<<ntohs(tcph->dest)<<endl;
-                        struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
+                        struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4); // There is no packet + tcp length!!!
                         cout << " " << srcIP << ":" << ntohs(tcph->source) << " -> " << destIP << ":" << ntohs(tcph->dest) << " [TCP]\n" <<endl;
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
