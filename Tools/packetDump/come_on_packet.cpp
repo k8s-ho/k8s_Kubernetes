@@ -1,17 +1,5 @@
 #include "come_on_packet.h"
 
-void printByHexData(u_int8_t *printArr, int length)
-{
-    for(int i=0;i<length;i++)
-    {
-        if(i%16==0)
-            cout<<endl;
-        cout<<setfill('0');
-        cout<<setw(2)<<hex<<(int)printArr[i]<<" ";
-
-    }
-    cout<<dec<<endl;
-}
 
 void come_on_packet(parse *ps)
 {
@@ -36,7 +24,7 @@ void come_on_packet(parse *ps)
                 struct ether_header *ep= (struct ether_header*)packet;
                 if(ep->ether_type==ntohs(ETHERTYPE_IP))
                 {
-                    cout << " [ Packet Information ] " <<endl;
+                    cout << "\n [ Packet Information ] " <<endl;
                     struct iphdr *iph = (struct iphdr*)(packet+sizeof(ether_header));
                     inet_ntop(AF_INET, &iph->saddr, srcIP, sizeof(srcIP));
                     inet_ntop(AF_INET, &iph->daddr ,destIP, sizeof(destIP));
@@ -47,13 +35,13 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst UDP Port : "<<ntohs(udph->dest)<<endl;
                         struct udphdr *udph = (struct udphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(udph->source) << " -> " << destIP << ":" << ntohs(udph->dest) << " [UDP]\n" <<endl;
-                        cout << " [*] Data Field" <<endl;
+                        cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
                             for(int i=0; i<packet_len; i++){
-                                cout <<packet[i];
+                                cout << packet[i];
                             }
                         }
-                        cout << "\n------------------------------------------------"<<endl;
+                        cout << "\n" << endl;
                     }
                     else if(iph->protocol==0x06)
                     {
@@ -62,10 +50,10 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst TCP Port : "<<ntohs(tcph->dest)<<endl;
                         struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(tcph->source) << " -> " << destIP << ":" << ntohs(tcph->dest) << " [TCP]\n" <<endl;
-                        cout << " [*] Data Field" <<endl;
+                        cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
                             for(int i=0; i<packet_len; i++){
-                                cout <<packet[i];
+                                cout << packet[i];
                             }
                         }
 //                        while(packet_len--)  //패킷의 오리지널 길이
@@ -74,7 +62,7 @@ void come_on_packet(parse *ps)
 //                           if((++ch % 16) == 0) //패킷부분을 볼때 보통 16진수를 16개를 한줄에 두기때문
 //                                printf("\n");
 //                        }
-                        cout << "\n------------------------------------------------"<<endl;
+                        cout << "\n" << endl;
                     }
                 }
                 if(ep->ether_type==ntohs(ETHERTYPE_ARP))
