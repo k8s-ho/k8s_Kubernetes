@@ -19,22 +19,23 @@ void come_on_packet(parse *ps)
         {
             case 1:
             {
-                cout << "------------- [+] Packet is coming -------------"<<endl;
+                cout << "-------- [+] Packet is coming / Packet Length: " << packet_len << " --------"<< endl;
                 int packet_len = pkthdr->len;
                 struct ether_header *ep= (struct ether_header*)packet;
                 if(ep->ether_type==ntohs(ETHERTYPE_IP))
                 {
-                    cout << "\n [ Packet Information / Packet Length: " << packet_len << " ]" << endl;
+                    cout << "\n [ IP Packet Information ]" << endl;
                     struct iphdr *iph = (struct iphdr*)(packet+sizeof(ether_header));
                     inet_ntop(AF_INET, &iph->saddr, srcIP, sizeof(srcIP));
                     inet_ntop(AF_INET, &iph->daddr ,destIP, sizeof(destIP));
                     if(iph->protocol==0x11)
                     {
-                        //cout << " [ UDP Header] " << endl;
+                        cout << " [ UDP Header] " << endl;
                         //cout<<" [*] Src UDP Port : "<<ntohs(udph->source)<<endl;
                         //cout<<" [*] Dst UDP Port : "<<ntohs(udph->dest)<<endl;
                         struct udphdr *udph = (struct udphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(udph->source) << " -> " << destIP << ":" << ntohs(udph->dest) << " [UDP]\n" <<endl;
+                        cout << " Ether + IP + UDP = " << sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
                         packet_len -= sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
                         packet += sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
@@ -49,11 +50,12 @@ void come_on_packet(parse *ps)
                     }
                     else if(iph->protocol==0x06)
                     {
-                        //cout << " [ TCP Header] " << endl;
+                        cout << " [ TCP Header] " << endl;
                         //cout<<" [*] Src TCP Port : "<<ntohs(tcph->source)<<endl;
                         //cout<<" [*] Dst TCP Port : "<<ntohs(tcph->dest)<<endl;
-                        struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4); // There is no packet + tcp length!!!
+                        struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(tcph->source) << " -> " << destIP << ":" << ntohs(tcph->dest) << " [TCP]\n" <<endl;
+                        cout << " Ether + IP + TCP = " << sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
                         packet_len -= sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
                         packet += sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
