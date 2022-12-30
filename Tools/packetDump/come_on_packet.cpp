@@ -15,6 +15,7 @@ void come_on_packet(parse *ps)
     unsigned int num=0;
     while(true)
     {
+        sleep(0.3); // test code
         ret=pcap_next_ex(pcd, &pkthdr, &packet);
         switch (ret)
         {
