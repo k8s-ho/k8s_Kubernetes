@@ -12,6 +12,7 @@ void come_on_packet(parse *ps)
     pcd=pcap_open_live(ps->using_interface(),BUFSIZ,1,1,errbuf);
     char srcIP[16];
     char destIP[16];
+    unsigned int num=1;
     while(true)
     {
         ret=pcap_next_ex(pcd, &pkthdr, &packet);
@@ -20,7 +21,8 @@ void come_on_packet(parse *ps)
             case 1:
             {
                 int packet_len = pkthdr->len;
-                cout << "-------- [+] Packet is coming / Packet Length: " << packet_len << " --------"<< endl;
+                cout << "-------- [No. " << num << "] Packet is coming / Packet Length: " << packet_len << " --------"<< endl;
+                num++;
                 struct ether_header *ep= (struct ether_header*)packet;
                 if(ep->ether_type==ntohs(ETHERTYPE_IP))
                 {
