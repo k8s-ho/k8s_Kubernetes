@@ -6,8 +6,8 @@ parse::parse(int argc, char *argv[]){
 void parse::check_argc(int argc, char *argv[]){
     if(argc!=2)
     {
-        cout << "***** 인자값이 잘못되었거나 존재하지 않습니다 *****\n";
-        cout << "    >> 사용법 : <dev>\n";
+        cout << "[!] Error: Please refer to the usage and enter the appropriate option :( \n";
+        cout << "[?] Usage: ./packetDump [interface name] \n";
         exit(1);
     }
     this->interface=argv[1];
