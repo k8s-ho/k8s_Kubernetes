@@ -35,7 +35,6 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst UDP Port : "<<ntohs(udph->dest)<<endl;
                         struct udphdr *udph = (struct udphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(udph->source) << " -> " << destIP << ":" << ntohs(udph->dest) << " [UDP]\n" <<endl;
-                        cout << " Ether + IP + UDP = " << sizeof(ether_header) + iph->ihl*4 + udph->uh_ulen << endl; // to be deleted 
                         packet_len -= sizeof(ether_header) + iph->ihl*4 + udph->uh_ulen;
                         packet += sizeof(ether_header) + iph->ihl*4 + udph->uh_ulen;
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
@@ -55,7 +54,6 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst TCP Port : "<<ntohs(tcph->dest)<<endl;
                         struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(tcph->source) << " -> " << destIP << ":" << ntohs(tcph->dest) << " [TCP]\n" <<endl;
-                        cout << " Ether + IP + TCP = " << sizeof(ether_header) + iph->ihl*4 + tcph->th_off*4 << endl; // to be deleted
                         packet_len -= sizeof(ether_header) + iph->ihl*4 + tcph->th_off*4;
                         packet += sizeof(ether_header) + iph->ihl*4 + tcph->th_off*4;
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
