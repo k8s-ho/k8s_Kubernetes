@@ -15,3 +15,8 @@ cd k8s_Kubernetes/Tools/packetDump/
 chmod +x required_installation.sh  
 ./required_installation.sh && make  
 ./packetDump [interface]  
+
+### Make Usage:
+__Compile & Build:__ make  
+__Delete OBJ file:__ make clean  
+
