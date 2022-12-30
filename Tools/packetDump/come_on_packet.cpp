@@ -4,7 +4,7 @@
 void come_on_packet(parse *ps)
 {
     int ret;
-    int ch=0;
+    //int ch=0;
     char errbuf[PCAP_ERRBUF_SIZE];
     pcap_t *pcd;
     const u_int8_t *packet;
