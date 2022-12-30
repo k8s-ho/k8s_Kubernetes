@@ -24,13 +24,13 @@ void come_on_packet(parse *ps)
                 struct ether_header *ep= (struct ether_header*)packet;
                 if(ep->ether_type==ntohs(ETHERTYPE_IP))
                 {
-                    cout << "\n [ IP Packet Information ]" << endl;
+                    //cout << "\n [ IP Packet Information ]" << endl;
                     struct iphdr *iph = (struct iphdr*)(packet+sizeof(ether_header));
                     inet_ntop(AF_INET, &iph->saddr, srcIP, sizeof(srcIP));
                     inet_ntop(AF_INET, &iph->daddr ,destIP, sizeof(destIP));
                     if(iph->protocol==0x11)
                     {
-                        cout << " [ UDP Header] " << endl;
+                        cout << " [ ETHER_NET / IP / UDP Packet ] " << endl;
                         //cout<<" [*] Src UDP Port : "<<ntohs(udph->source)<<endl;
                         //cout<<" [*] Dst UDP Port : "<<ntohs(udph->dest)<<endl;
                         struct udphdr *udph = (struct udphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
@@ -49,7 +49,7 @@ void come_on_packet(parse *ps)
                     }
                     else if(iph->protocol==0x06)
                     {
-                        cout << " [ TCP Header] " << endl;
+                        cout << " [ ETHER_NET / IP / TCP Packet ] " << endl;
                         //cout<<" [*] Src TCP Port : "<<ntohs(tcph->source)<<endl;
                         //cout<<" [*] Dst TCP Port : "<<ntohs(tcph->dest)<<endl;
                         struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
