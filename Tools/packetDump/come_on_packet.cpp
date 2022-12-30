@@ -35,9 +35,9 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst UDP Port : "<<ntohs(udph->dest)<<endl;
                         struct udphdr *udph = (struct udphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(udph->source) << " -> " << destIP << ":" << ntohs(udph->dest) << " [UDP]\n" <<endl;
-                        cout << " Ether + IP + UDP = " << sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
-                        packet_len -= sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
-                        packet += sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
+                        cout << " Ether + IP + UDP = " << sizeof(ether_header) + iph->ihl*4 + udph->th_off*4; // to be deleted 
+                        packet_len -= sizeof(ether_header) + iph->ihl*4 + udph->th_off*4;
+                        packet += sizeof(ether_header) + iph->ihl*4 + udph->th_off*4;
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
                             for(int i=0; i<packet_len; i++){
@@ -55,9 +55,9 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst TCP Port : "<<ntohs(tcph->dest)<<endl;
                         struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(tcph->source) << " -> " << destIP << ":" << ntohs(tcph->dest) << " [TCP]\n" <<endl;
-                        cout << " Ether + IP + TCP = " << sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
-                        packet_len -= sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
-                        packet += sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
+                        cout << " Ether + IP + TCP = " << sizeof(ether_header) + iph->ihl*4 + tcph->th_off*4; // to be deleted
+                        packet_len -= sizeof(ether_header) + iph->ihl*4 + tcph->th_off*4;
+                        packet += sizeof(ether_header) + iph->ihl*4 + tcph->th_off*4;
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
                             for(int i=0; i<packet_len; i++){
