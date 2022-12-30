@@ -19,8 +19,8 @@ void come_on_packet(parse *ps)
         {
             case 1:
             {
-                cout << "-------- [+] Packet is coming / Packet Length: " << packet_len << " --------"<< endl;
                 int packet_len = pkthdr->len;
+                cout << "-------- [+] Packet is coming / Packet Length: " << packet_len << " --------"<< endl;
                 struct ether_header *ep= (struct ether_header*)packet;
                 if(ep->ether_type==ntohs(ETHERTYPE_IP))
                 {
