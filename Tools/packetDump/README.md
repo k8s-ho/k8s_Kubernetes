@@ -11,7 +11,7 @@ __Install g++:__ apt-get install g++
 --- 
 ### Usage: 
 git clone https://github.com/k8s-ho/k8s_Kubernetes  
-cd k8s_Kubernetes/Tools/packetDump/ 
-chmod +x required_installation.sh
+cd k8s_Kubernetes/Tools/packetDump/   
+chmod +x required_installation.sh  
 ./required_installation.sh && make  
 ./packetDump [interface]  
