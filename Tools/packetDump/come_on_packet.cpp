@@ -20,6 +20,7 @@ void come_on_packet(parse *ps)
         {
             case 1:
             {
+                sleep(0.5);
                 num++;
                 int packet_len = pkthdr->len;
                 cout << "-------- [No. " << num << "] Packet is coming / Packet Length: " << packet_len << " --------"<< endl;
