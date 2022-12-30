@@ -15,12 +15,12 @@ void come_on_packet(parse *ps)
     unsigned int num=0;
     while(true)
     {
-        num++;
         ret=pcap_next_ex(pcd, &pkthdr, &packet);
         switch (ret)
         {
             case 1:
             {
+                num++;
                 int packet_len = pkthdr->len;
                 cout << "-------- [No. " << num << "] Packet is coming / Packet Length: " << packet_len << " --------"<< endl;
                 struct ether_header *ep= (struct ether_header*)packet;
