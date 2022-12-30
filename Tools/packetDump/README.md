@@ -2,7 +2,7 @@
 I made it because I wanted to dump packets in kubernetes. Please run that file first:)  
 
 ---
-### file preview:   
+### File preview:   
 __Update:__ apt update  
 __Install Libpcap:__ apt-get install libpcap-dev  
 __Install Make:__ apt-get install make  
@@ -16,7 +16,7 @@ chmod +x required_installation.sh
 ./required_installation.sh && make  
 ./packetDump [interface]  
 
-### Make Usage:
+### Make file usage:
 __Compile & Build:__ make  
 __Delete OBJ file:__ make clean  
 
