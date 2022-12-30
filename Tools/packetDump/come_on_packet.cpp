@@ -35,12 +35,16 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst UDP Port : "<<ntohs(udph->dest)<<endl;
                         struct udphdr *udph = (struct udphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(udph->source) << " -> " << destIP << ":" << ntohs(udph->dest) << " [UDP]\n" <<endl;
+                        packet_len -= sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
+                        packet += sizeof(ether_header) + iph->ihl*4 + sizeof(udphdr);
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
                             for(int i=0; i<packet_len; i++){
                                 cout << packet[i];
                             }
                         }
+                        else
+                            cout << " => No Data in this Packet :(" << endl;
                         cout << "\n" << endl;
                     }
                     else if(iph->protocol==0x06)
@@ -50,12 +54,16 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst TCP Port : "<<ntohs(tcph->dest)<<endl;
                         struct tcphdr *tcph = (struct tcphdr*)(packet+sizeof(ether_header)+iph->ihl*4); // There is no packet + tcp length!!!
                         cout << " " << srcIP << ":" << ntohs(tcph->source) << " -> " << destIP << ":" << ntohs(tcph->dest) << " [TCP]\n" <<endl;
+                        packet_len -= sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
+                        packet += sizeof(ether_header) + iph->ihl*4 + sizeof(tcphdr);
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
                             for(int i=0; i<packet_len; i++){
                                 cout << packet[i];
                             }
                         }
+                        else
+                            cout << " => No Data in this Packet :(" << endl;
 //                        while(packet_len--)  //패킷의 오리지널 길이
 //                        {
 //                           printf("%02x ", *(packet++)); //02x = 두 칸으로 16진수를 표기
