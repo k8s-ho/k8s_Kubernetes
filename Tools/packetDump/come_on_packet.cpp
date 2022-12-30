@@ -15,7 +15,7 @@ void come_on_packet(parse *ps)
     unsigned int num=0;
     while(true)
     {
-        sleep(0.3); // test code
+        sleep(0.3); // test code: There is a problem. Packet order is mixed up.. :( why?..
         ret=pcap_next_ex(pcd, &pkthdr, &packet);
         switch (ret)
         {
