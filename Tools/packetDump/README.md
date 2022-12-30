@@ -17,7 +17,7 @@ __Delete OBJ file:__ make clean
 
 ---
 
-### Preview the installation package:   
+### [Debian]Preview the installation package:   
 __Update:__ apt update  
 __Install Libpcap:__ apt-get install libpcap-dev  
 __Install Make:__ apt-get install make  
