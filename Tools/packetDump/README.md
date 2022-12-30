@@ -8,4 +8,10 @@ __Install Libpcap:__ apt-get install libpcap-dev
 __Install Make:__ apt-get install make  
 __Install g++:__ apt-get install g++   
   
-git clone https://github.com/k8s-ho/k8s_Kubernetes
+--- 
+### Usage: 
+git clone https://github.com/k8s-ho/k8s_Kubernetes  
+cd k8s_Kubernetes/Tools/packetDump/ 
+chmod +x required_installation.sh
+./required_installation.sh && make  
+./packetDump [interface]  
