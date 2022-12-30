@@ -24,7 +24,7 @@ void come_on_packet(parse *ps)
                 struct ether_header *ep= (struct ether_header*)packet;
                 if(ep->ether_type==ntohs(ETHERTYPE_IP))
                 {
-                    cout << "\n [ Packet Information ] " <<endl;
+                    cout << "\n [ Packet Information / Packet Length: " << packet_len << " ]" << endl;
                     struct iphdr *iph = (struct iphdr*)(packet+sizeof(ether_header));
                     inet_ntop(AF_INET, &iph->saddr, srcIP, sizeof(srcIP));
                     inet_ntop(AF_INET, &iph->daddr ,destIP, sizeof(destIP));
