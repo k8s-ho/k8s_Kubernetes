@@ -35,9 +35,9 @@ void come_on_packet(parse *ps)
                         //cout<<" [*] Dst UDP Port : "<<ntohs(udph->dest)<<endl;
                         struct udphdr *udph = (struct udphdr*)(packet+sizeof(ether_header)+iph->ihl*4);
                         cout << " " << srcIP << ":" << ntohs(udph->source) << " -> " << destIP << ":" << ntohs(udph->dest) << " [UDP]\n" <<endl;
-                        cout << " Ether + IP + UDP = " << sizeof(ether_header) + iph->ihl*4 + udph->th_off*4; // to be deleted 
-                        packet_len -= sizeof(ether_header) + iph->ihl*4 + udph->th_off*4;
-                        packet += sizeof(ether_header) + iph->ihl*4 + udph->th_off*4;
+                        cout << " Ether + IP + UDP = " << sizeof(ether_header) + iph->ihl*4 + udph->uh_ulen; // to be deleted 
+                        packet_len -= sizeof(ether_header) + iph->ihl*4 + udph->uh_ulen;
+                        packet += sizeof(ether_header) + iph->ihl*4 + udph->uh_ulen;
                         cout << " [*] Data Field / Data Length : " << packet_len << endl;
                         if(packet_len > 0){
                             for(int i=0; i<packet_len; i++){
