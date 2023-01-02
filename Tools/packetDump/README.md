@@ -1,4 +1,4 @@
-# required_installation.sh
+# setup_packetDump.sh
   
 I made it because I wanted to dump packets in kubernetes:)
 
@@ -7,8 +7,8 @@ I made it because I wanted to dump packets in kubernetes:)
 ### Usage: 
 git clone https://github.com/k8s-ho/k8s_Kubernetes  
 cd k8s_Kubernetes/Tools/packetDump/   
-chmod +x required_installation.sh  
-./required_installation.sh && make  
+chmod +x setup_packetDump.sh  
+./setup_packetDump.sh && make  
 ./packetDump [interface]  
 
 ### Make file usage:
