@@ -57,6 +57,6 @@ done < image.txt
 
 while read LINE; do
 	echo "[+] Save the image in tar format: [$LINE]"
-	docker save $LINE -o $LINE.tar
+	docker save $LINE > $(echo $LINE | sed 's/\//_/g').tar
 done < image.txt
 rm -rf image.txt
