@@ -28,7 +28,7 @@ echo "[+] Namespace List "
 kubectl get namespace -o jsonpath='{.items[*].metadata.name}' | sed 's/ /\n/g' | sort
 echo " "
 echo "---------------------------------------------"
-echo " => Enter the Namespace: "
+echo " => Please enter your namespace [ If you want to enter all namespaces, plz enter "all" ]"
 read NS
 echo "[+] The namespace you chose is $NS !!"
 
