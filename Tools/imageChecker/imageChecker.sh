@@ -34,6 +34,10 @@ echo "[+] The namespace you chose is $NS !!"
 
 image_func()
 {
+	if [ $(ls -al | grep download_image | wc -l) -eq 1 ]; then
+		echo "[-] Remove the download_image directory"
+		rm -rf download_image
+	fi
 	mkdir download_image
 	cd download_image
 
