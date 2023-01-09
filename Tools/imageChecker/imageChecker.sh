@@ -42,6 +42,7 @@ CHECK2=$(systemctl status docker | wc -l)
 if [ $CHECK2 -eq 0 ]; then
 	echo "[!] ERROR: You need docker installation!! Run the following command"
 	echo "[+] apt update && apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin"
+	echo "[+] systemctl start docker"
 	exit 100
 fi
 
