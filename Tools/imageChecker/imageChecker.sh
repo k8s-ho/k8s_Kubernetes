@@ -52,11 +52,22 @@ cd download_image
 kubectl get pod -n $NS -o jsonpath='{.items[*].spec.containers[*].image}' | sed 's/ /\n/g' | sort | uniq > image.txt
 while read LINE; do
 	echo "[+] Start image pull: [$LINE]"
-	docker pull $LINE
+	docker pull -q $LINE
 done < image.txt
-
+echo " "
+echo " "
 while read LINE; do
 	echo "[+] Save the image in tar format: [$LINE]"
 	docker save $LINE > $(echo $LINE | sed 's/\//_/g').tar
 done < image.txt
+echo " "
+echo " "
+
+while read LINE; do
+	echo "[+] Storing image vulnerability information summary using trivy: [$LINE]"
+	trivy image -q $LINE | grep Total: -B3 >> vuln_image.txt
+	echo "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"  >> vuln_image.txt
+done < image.txt
+echo " "
+echo "[*] Storing imageat ~/download_image/vuln_image.txt"
 rm -rf image.txt
