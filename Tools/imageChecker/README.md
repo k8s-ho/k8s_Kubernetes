@@ -1,6 +1,6 @@
 # imageChecker.sh
   
-I made it because I wanted to integrate and check the Kubernetes cluster's pod information and container image information and download the image file :)
+I made it because I wanted to integrate and check the Kubernetes cluster's pod information, container image information and download the image file :)
 
 ---
 
