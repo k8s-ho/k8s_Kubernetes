@@ -5,23 +5,42 @@ I made it because I wanted to dump packets in kubernetes:)
 ---
 
 ### Usage: 
+```bash
 git clone https://github.com/k8s-ho/k8s_Kubernetes  
 cd k8s_Kubernetes/Tools/packetDump/   
 chmod +x setup_packetDump.sh  
 ./setup_packetDump.sh && make  
 ./packetDump [interface]  
+```
 
 ### Make file usage:
-__Compile & Build:__ make  
-__Delete OBJ file:__ make clean  
-
+__Compile & Build:__ 
+```bash
+make
+```
+__Delete OBJ file:__ 
+```bash
+make clean  
+```
 ---
 # setup_packetDump.sh
 ### [Debian] Preview the installation package:   
-__Update:__ apt update  
-__Install Libpcap:__ apt-get install libpcap-dev  
-__Install Make:__ apt-get install make  
-__Install g++:__ apt-get install g++   
+__Update:__ 
+```bash
+apt update  
+```
+__Install Libpcap:__ 
+```bash
+apt-get install libpcap-dev  
+```
+__Install Make:__ 
+```bash
+apt-get install make  
+```
+__Install g++:__ 
+```bash
+apt-get install g++  
+```
   
 
 
