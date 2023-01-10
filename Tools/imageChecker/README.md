@@ -6,24 +6,30 @@ You can also check container images where vulnerabilities exist :)
 ---
 
 ### Usage:  
+```bash
 git clone https://github.com/k8s-ho/k8s_Kubernetes    
 cd k8s_Kubernetes/Tools/imaegChecker/   
 chmod +x setup_imageChecker.sh    
 ./setup_imageChecker.sh    
 ./imageChecker.sh 
-  
+```
+
 ---
   
 # setup_imageChecker.sh  
 ### [Debian] Preview the installation package:   
 __Update:__     
+```bash
 apt update   
-
-__Install Docker:__      
+```
+__Install Docker:__    
+```bash
 apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin   
-
-__Install Trivy:__   
+```
+__Install Trivy:__  
+```bash
 apt-get install wget apt-transport-https gnupg lsb-release -y    
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -     
 echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list    
 apt update && apt-get install trivy. 
+```
