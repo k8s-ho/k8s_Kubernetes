@@ -37,9 +37,7 @@ __Install Whaler:__
 ```bash
 wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz   
 tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz   
-export PATH=$PATH:/usr/local/go/bin   
-#export GOPATH=$(go env | grep GOPATH | tr -d "GOPATH=")   
-#source ~/.bashrc   
+export PATH=$PATH:/usr/local/go/bin      
 go get -u github.com/P3GLEG/Whaler   
 cd ~/go/src/github.com/P3GLEG/Whaler   
 go build   
