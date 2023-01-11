@@ -65,7 +65,15 @@ image_func()
 		echo "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"  >> vuln_image.txt
 	done < image.txt
 	echo " "
-	echo "[*] Storing imageat ~/download_image/vuln_image.txt"
+	echo "[*] Storing image at download_image/vuln_image.txt"
+	echo " "
+	mkdir Dockerfile
+	while read LINE; do
+	echo "[+] Using 'whaler' to guess the Dockerfile of the image and save it: [$LINE]"
+	whaler $LINE > dockerfile_dir/$(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' )
+	done < image.txt
+	echo "[*] Storing Dockerfile at download_image/dockerfile_dir/"
+	echo " "
 	rm -rf image.txt
 }
 
