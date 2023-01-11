@@ -32,4 +32,15 @@ apt-get install wget apt-transport-https gnupg lsb-release -y
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -     
 echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list    
 apt update && apt-get install trivy. 
+```   
+__Install Whaler:__   
+```bash
+wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz   
+tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz   
+export PATH=$PATH:/usr/local/go/bin   
+#export GOPATH=$(go env | grep GOPATH | tr -d "GOPATH=")   
+#source ~/.bashrc   
+go get -u github.com/P3GLEG/Whaler   
+cd ~/go/src/github.com/P3GLEG/Whaler   
+go build   
 ```
