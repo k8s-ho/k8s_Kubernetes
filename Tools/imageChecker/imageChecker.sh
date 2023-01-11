@@ -34,13 +34,13 @@ echo "[+] The namespace you chose is $NS !!"
 
 image_func()
 {
-	if [ $(ls -al | grep download_image | wc -l) -eq 1 ]; then
-		echo "[-] Remove the download_image directory"
-		rm -rf download_image
+	if [ $(ls -al | grep result_file | wc -l) -eq 1 ]; then
+		echo "[-] Remove the result_file directory"
+		rm -rf result_file
 	fi
 	
-	mkdir download_image
-	cd download_image
+	mkdir result_file
+	cd result_file
 
 	if [ $1 == "namespace" ]; then
 		kubectl get pod -n $NS -o jsonpath='{.items[*].spec.containers[*].image}' | sed 's/ /\n/g' | sort | uniq > image.txt
@@ -55,10 +55,13 @@ image_func()
 	echo " "
 	echo " "
 	
+	# using docker save
+	mkdir save_image
 	while read LINE; do
 		echo "[+] Save the image in tar format: [$LINE]"
-		docker save $LINE > $(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' ).tar # tar error by name
+		docker save $LINE > save_image/$(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' ).tar # tar error by name
 	done < image.txt
+	echo "[*] Storing image file at 'result_file/save_image/'"
 	echo " "
 	echo " "
 	
@@ -68,7 +71,7 @@ image_func()
 		trivy image -q $LINE | grep Total: -B3 >> vuln_image.txt
 		echo "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"  >> vuln_image.txt
 	done < image.txt
-	echo "[*] Storing image at download_image/vuln_image.txt"
+	echo "[*] Storing image at 'result_file/vuln_image.txt'"
 	
 	echo " "
 	echo " "
@@ -79,7 +82,7 @@ image_func()
 	echo "[+] Using 'whaler' to guess the Dockerfile of the image and save it: [$LINE]"
 	whaler $LINE > dockerfile_dir/$(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' )
 	done < image.txt
-	echo "[*] Storing Dockerfile at download_image/dockerfile_dir/"
+	echo "[*] Storing Dockerfile at 'result_file/dockerfile_dir/'"
 	echo " "
 	echo " "
 	rm -rf image.txt
