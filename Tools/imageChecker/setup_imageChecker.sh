@@ -6,6 +6,12 @@ echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main |
 apt update && apt-get install trivy
 systemctl restart docker
 chmod +x imageChecker.sh
+wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go get -u github.com/P3GLEG/Whaler
+cd ~/go/src/github.com/P3GLEG/Whaler
+go build
 clear
 echo "[*] imageChecker setup installation is complete!! @IMyoungho"
 echo "[?] Usage: ./imageChecker.sh"
