@@ -21,7 +21,7 @@ kubectl get pod -A -o jsonpath='{range .items[*]}Image: {.status.containerStatus
 echo " "
 echo "---------------------------------------------"
 echo "[+] Detail "
-kubectl get pod -A -o jsonpath='{range .items[*]}Namespace: {.metadata.namespace} | Pod: {.metadata.name} | Container: {.spec.containers[*].name} | Image: {.spec.containers[*].image}{"\n"}{end}'
+kubectl get pod -A -o jsonpath='{range .items[*]}Node: {.spec.nodeName} | Namespace: {.metadata.namespace} | Pod: {.metadata.name} | Container: {.spec.containers[*].name} | Image: {.spec.containers[*].image}{"\n"}{end}'
 echo " "
 echo "---------------------------------------------"
 echo "[+] Namespace List "
