@@ -38,6 +38,7 @@ image_func()
 		echo "[-] Remove the download_image directory"
 		rm -rf download_image
 	fi
+	
 	mkdir download_image
 	cd download_image
 
@@ -46,33 +47,40 @@ image_func()
 	elif [ $1 == "all" ]; then
 		kubectl get pod -A -o jsonpath='{.items[*].spec.containers[*].image}' | sed 's/ /\n/g' | sort | uniq > image.txt
 	fi
+	
 	while read LINE; do
 		echo "[+] Start image pull: [$LINE]"
 		docker pull -q $LINE
 	done < image.txt
 	echo " "
 	echo " "
+	
 	while read LINE; do
 		echo "[+] Save the image in tar format: [$LINE]"
 		docker save $LINE > $(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' ).tar # tar error by name
 	done < image.txt
 	echo " "
 	echo " "
-
+	
+	# using Trivy
 	while read LINE; do
 		echo "[+] Storing image vulnerability information summary using trivy: [$LINE]"
 		trivy image -q $LINE | grep Total: -B3 >> vuln_image.txt
 		echo "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"  >> vuln_image.txt
 	done < image.txt
-	echo " "
 	echo "[*] Storing image at download_image/vuln_image.txt"
+	
 	echo " "
+	echo " "
+	
+	# using Whaler
 	mkdir dockerfile_dir
 	while read LINE; do
 	echo "[+] Using 'whaler' to guess the Dockerfile of the image and save it: [$LINE]"
 	whaler $LINE > dockerfile_dir/$(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' )
 	done < image.txt
 	echo "[*] Storing Dockerfile at download_image/dockerfile_dir/"
+	echo " "
 	echo " "
 	rm -rf image.txt
 }
