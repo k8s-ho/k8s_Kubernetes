@@ -12,6 +12,7 @@ export PATH=$PATH:/usr/local/go/bin
 go get -u github.com/P3GLEG/Whaler
 cd ~/go/src/github.com/P3GLEG/Whaler
 go build
+cp whaler /usr/bin/
 clear
 echo "[*] imageChecker setup installation is complete!! @IMyoungho"
 echo "[?] Usage: ./imageChecker.sh"
