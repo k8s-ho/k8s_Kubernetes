@@ -79,8 +79,8 @@ image_func()
 	# using Whaler
 	mkdir dockerfile_dir
 	while read LINE; do
-	echo "[+] Using 'whaler' to guess the Dockerfile of the image and save it: [$LINE]"
-	whaler $LINE > dockerfile_dir/$(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' )
+		echo "[+] Using 'whaler' to guess the Dockerfile of the image and save it: [$LINE]"
+		whaler $LINE > dockerfile_dir/$(echo $LINE | sed 's/\//_/g' | sed 's/\./_/g' | sed 's/\:/-/g' )
 	done < image.txt
 	echo "[*] Storing Dockerfile at 'result_file/dockerfile_dir/'"
 	echo " "
