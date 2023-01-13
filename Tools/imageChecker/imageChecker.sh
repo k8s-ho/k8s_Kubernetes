@@ -68,7 +68,7 @@ image_func()
 	# using Trivy
 	while read LINE; do
 		echo "[+] Storing image vulnerability information summary using trivy: [$LINE]"
-		trivy image -q $LINE | grep Total: -B3 >> img_vuln_info.txt
+		trivy image -q $LINE --security-checks vuln | grep Total: -B3 >> img_vuln_info.txt
 		echo "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"  >> img_vuln_info.txt
 	done < image.txt
 	echo "[*] Storing image at 'result_file/img_vuln_info.txt'"
