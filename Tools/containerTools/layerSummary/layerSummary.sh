@@ -1,6 +1,12 @@
 #!/bin/bash
 ls /var/lib/docker/image/overlay2/layerdb/sha256/ > layerdb.txt
 
+PROC_CHK=$(docker image | wc -l)
+if [ $PROC_CHK -le 1 ]; then
+	echo "[!] This program requires docker.service to be running. Check systemctl status docker"
+	exit 100
+fi 
+
 parse(){
 	CHK=$(ls | grep $1.txt | wc -l)
 	if [ $CHK -eq 1 ]; then
