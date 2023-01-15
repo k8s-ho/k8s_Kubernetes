@@ -9,4 +9,5 @@ echo "[?] Usage: ./layerSummary.sh"
 echo "<options>"
 echo "    -a     : Show all information"
 echo "    -h     : Show this message."
+echo "------------------------------------------------------------"
 ls
