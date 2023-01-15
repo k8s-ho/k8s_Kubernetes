@@ -3,7 +3,7 @@ ls /var/lib/docker/image/overlay2/layerdb/sha256/ > layerdb.txt
 
 PROC_CHK=$(docker images | wc -l)
 if [ $PROC_CHK -le 1 ]; then
-	echo "[!] Check if the docker image exists"
+	echo "[!] Error: Check if the docker image exists"
 	exit 100
 fi 
 
