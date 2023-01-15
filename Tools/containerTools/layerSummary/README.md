@@ -11,6 +11,10 @@ cd k8s_Kubernetes/Tools/containerTools
 chmod +x setup_layerSummary.sh
 ./setup_layerSummary.sh 
 ./layerSummary.sh
+
+<options>
+ -a     : Show all information  ex) ./layerSummery.sh -a
+ -h     : Show this message     ex) ./layerSummery.sh -h
 ```
 
 ---
