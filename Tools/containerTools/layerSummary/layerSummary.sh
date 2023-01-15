@@ -40,7 +40,7 @@ for row in $(echo "${data}" | jq -r '.[] | @base64'); do
 	IMG=$(parse2 ".RepoTags" | tr -d " ") 
 	ROOTFS=$(parse2 ".RootFS.Layers")
 	echo "* ID: $ID"
-  echo "* Image: $IMG" | tr -d "[]\"\n"
+  	echo "* Image: $IMG" | tr -d "[]\"\n"
 	echo "* RootFS Layer $ROOTFS" | tr -d "[]\"\," | sort
 	echo "-----"
 	echo ""
