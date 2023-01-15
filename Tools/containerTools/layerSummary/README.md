@@ -1,6 +1,6 @@
 # layerSummary.sh
   
-This is a tool that allows you to briefly check the files, paths, and low-level information of containers and images related to the container layer :)
+This is a tool that allows you to briefly check the files, paths, and low-level information of containers and images related to the container layer. Docker-related layers and file paths are confusing, so I made it to make it easier to see :)
 
 ---
 
