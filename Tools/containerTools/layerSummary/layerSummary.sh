@@ -1,9 +1,9 @@
 #!/bin/bash
 ls /var/lib/docker/image/overlay2/layerdb/sha256/ > layerdb.txt
 
-PROC_CHK=$(docker image | wc -l)
+PROC_CHK=$(docker images | wc -l)
 if [ $PROC_CHK -le 1 ]; then
-	echo "[!] This program requires docker.service to be running. Check systemctl status docker"
+	echo "[!] Check if the docker image exists"
 	exit 100
 fi 
 
