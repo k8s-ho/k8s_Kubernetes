@@ -51,7 +51,7 @@ for row in $(echo "${data}" | jq -r '.[] | @base64'); do
 	UPPER=$(parse2 ".GraphDriver.Data.UpperDir")
 	MERGE=$(parse2 ".GraphDriver.Data.MergedDir")
  
-  echo "* Image: $IMG" | tr -d "[]\""
+ 	echo "* Image: $IMG" | tr -d "[]\""
 	echo "* Image ID: $ID" | tr -d "\n"
 	echo "* RootFS Layer $ROOTFS" | tr -d "[]\"\," | sort
 	echo " "
