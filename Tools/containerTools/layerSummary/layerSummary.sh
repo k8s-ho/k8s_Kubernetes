@@ -14,7 +14,7 @@ parse(){
 	echo "[+] layerdb.$1 " 
 	echo "[>] Path: /var/lib/docker/image/overlay2/layerdb/sha256/*/$1"
 	echo "------------------------------------------------------"
-	cat /root/$1.txt | sort
+	cat ./$1.txt | sort
 	echo " "
 	echo " "
 }
@@ -22,8 +22,7 @@ parse(){
 echo "[+] Real Data" 
 echo "[>] Path: /var/lib/docker/overlay2/*"
 echo "------------------------------------------------------"
-cd /var/lib/docker/overlay2/; ls | sort
-cd /root/
+ls /var/lib/docker/overlay2 | sort
 echo " "
 echo " "
 
