@@ -1,5 +1,4 @@
 #!/bin/bash
-ls /var/lib/docker/image/overlay2/layerdb/sha256/ > layerdb.txt
 
 PROC_CHK=$(docker images | wc -l)
 if [ $PROC_CHK -le 1 ]; then
@@ -7,20 +6,23 @@ if [ $PROC_CHK -le 1 ]; then
 	exit 100
 fi 
 
-parse(){
-	CHK=$(ls | grep $1.txt | wc -l)
-	if [ $CHK -eq 1 ]; then
-		rm -rf $1.txt
-	fi 
+CHK=$(ls | grep -i result_file | wc -l)
+if [ $CHK -eq 1 ]; then
+	rm -rf result_file
+fi 
 
+mkdir result_file
+ls /var/lib/docker/image/overlay2/layerdb/sha256/ > ./result_file/layerdb.txt
+
+parse(){
 	while read LINE; do
-		cat /var/lib/docker/image/overlay2/layerdb/sha256/$LINE/$1 >> $1.txt; echo " " >> $1.txt
-	done < layerdb.txt
+		cat /var/lib/docker/image/overlay2/layerdb/sha256/$LINE/$1 >> ./result_file/$1.txt; echo " " >> ./result_file/$1.txt
+	done < ./result_file/layerdb.txt
 
 	echo "[+] layerdb.$1 " 
 	echo "[>] Path: /var/lib/docker/image/overlay2/layerdb/sha256/*/$1"
 	echo "------------------------------------------------------"
-	cat ./$1.txt | sort
+	cat ./result_file/$1.txt | sort
 	echo " "
 	echo " "
 }
@@ -45,9 +47,21 @@ for row in $(echo "${data}" | jq -r '.[] | @base64'); do
 	ID=$(parse2 ".Id")
 	IMG=$(parse2 ".RepoTags" | tr -d " ") 
 	ROOTFS=$(parse2 ".RootFS.Layers")
-	echo "* ID: $ID"
-  	echo "* Image: $IMG" | tr -d "[]\"\n"
+	LOWER=$(parse2 ".GraphDriver.Data.LowerDir")
+	UPPER=$(parse2 ".GraphDriver.Data.UpperDir")
+	MERGE=$(parse2 ".GraphDriver.Data.MergedDir")
+ 
+  echo "* Image: $IMG" | tr -d "[]\""
+	echo "* Image ID: $ID" | tr -d "\n"
 	echo "* RootFS Layer $ROOTFS" | tr -d "[]\"\," | sort
+	echo " "
+	echo "* LowerDir "
+	echo "$LOWER" | sed 's/\:/\n/g' | sort | tr -d '"' 
+	echo " "
+	echo "* UpperDir "
+	echo "$UPPER" | tr -d '"' 
+	echo " "
+	echo "* MergedDir"
+	echo "$MERGE" | tr -d '"' 
 	echo "-----"
-	echo ""
 done
