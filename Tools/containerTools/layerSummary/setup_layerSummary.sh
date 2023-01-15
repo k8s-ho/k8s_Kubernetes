@@ -6,4 +6,7 @@ chmod +x layerSummary.sh
 clear
 echo "[*] layerSummary setup installation is complete!! @IMyoungho"
 echo "[?] Usage: ./layerSummary.sh"
+echo "<options>"
+echo "    -a     : Show all information"
+echo "    -h     : Show this message."
 ls
