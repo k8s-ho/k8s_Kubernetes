@@ -87,5 +87,6 @@ for row in $(echo "${data}" | jq -r '.[] | @base64'); do
 	echo " "
 	echo "* MergedDir"
 	echo "$MERGE" | tr -d '"' 
+	echo " "
 	echo "-----"
 done
