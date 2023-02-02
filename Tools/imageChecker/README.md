@@ -8,7 +8,7 @@ You can also check container images where vulnerabilities exist :)
 ### Usage:  
 ```bash
 git clone https://github.com/k8s-ho/k8s_Kubernetes    
-cd k8s_Kubernetes/Tools/imaegChecker/   
+cd k8s_Kubernetes/Tools/imageChecker/  
 chmod +x setup_imageChecker.sh    
 ./setup_imageChecker.sh    
 ./imageChecker.sh 
