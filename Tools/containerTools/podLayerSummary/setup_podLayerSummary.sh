@@ -17,8 +17,7 @@ sudo chmod +x podLayerSummary.sh
 clear
 echo "[*] podLayerSummary setup installation is complete!! @IMyoungho"
 echo "[?] Usage: ./podLayerSummary.sh"
-echo "<options>"
-echo "    -a     : Show all information"
+echo "<options> default: Show all information"
 echo "    -f     : Only filtered containers are shown  ex) ./podLayerSummary.sh -f [Container ID]"
 echo "    -h     : Show this message."
 echo "------------------------------------------------------------"
