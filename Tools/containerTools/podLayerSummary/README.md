@@ -15,7 +15,7 @@ chmod +x setup_podLayerSummary.sh
 
 <options>
  -a     : Show all information  ex) ./podLayerSummery.sh -a
- -f     : filter and show  ex) ./podLayerSummary.sh -f [Container ID]
+ -f     : Only filtered containers are shown  ex) ./podLayerSummary.sh -f [Container ID]
  -h     : Show this message
 ```
 
