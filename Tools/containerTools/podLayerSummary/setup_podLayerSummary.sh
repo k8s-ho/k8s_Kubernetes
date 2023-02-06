@@ -19,6 +19,7 @@ echo "[*] podLayerSummary setup installation is complete!! @IMyoungho"
 echo "[?] Usage: ./podLayerSummary.sh"
 echo "<options>"
 echo "    -a     : Show all information"
+echo "    -f     : Filter and Show. ./podLayerSummary.sh -f [Container ID]"
 echo "    -h     : Show this message."
 echo "------------------------------------------------------------"
 ls
