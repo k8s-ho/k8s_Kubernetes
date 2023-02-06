@@ -7,7 +7,7 @@ clear
 echo "[*] layerSummary setup installation is complete!! @IMyoungho"
 echo "[?] Usage: ./layerSummary.sh"
 echo "<options>"
-echo "    -a     : Show all information"
+echo "    -a     : Show all information(Data path, Layer info..)"
 echo "    -h     : Show this message."
 echo "------------------------------------------------------------"
 ls
