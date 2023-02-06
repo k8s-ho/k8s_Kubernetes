@@ -13,8 +13,7 @@ chmod +x setup_podLayerSummary.sh
 ./podLayerSummary.sh
 
 <options>
- -a     : Show all information  ex) ./layerSummery.sh -a
- -h     : Show this message     ex) ./layerSummery.sh -h
+ -a     : Show all information  ex) ./podLayerSummery.sh -a
 ```
 
 ---
