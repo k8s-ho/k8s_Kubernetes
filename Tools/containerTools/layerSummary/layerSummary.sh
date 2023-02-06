@@ -4,7 +4,7 @@
 usage()
 {
 	echo "<options>"
-	echo "    -a     : Show all information"
+	echo "    -a     : Show all information(Data path, Layer info..)"
 	echo "    -h     : Show this message."
 	exit 100
 }
