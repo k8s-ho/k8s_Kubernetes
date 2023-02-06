@@ -5,7 +5,7 @@ usage()
 {
   echo "<options>"
   echo "    -a     : Show all information."
-  echo "    -f     : Filter and Show. ./podLayerSummary.sh -f [Container ID]"
+  echo "    -f     : Only filtered containers are shown  ex) ./podLayerSummary.sh -f [Container ID]"
   echo "    -h     : Show this message."
   exit 100
 }
