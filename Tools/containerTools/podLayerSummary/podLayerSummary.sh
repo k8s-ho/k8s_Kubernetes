@@ -3,8 +3,7 @@
 # option description
 usage()
 {
-  echo "<options>"
-  echo "    -a     : Show all information."
+  echo "<options> default: Show all information"
   echo "    -f     : Only filtered containers are shown  ex) ./podLayerSummary.sh -f [Container ID]"
   echo "    -h     : Show this message."
   exit 100
@@ -13,13 +12,18 @@ usage()
 # Run option 
 while getopts ah opts; do
         case $opts in
-        a) showAll
+        f) filter
                 ;;
         h) usage
                 ;;
         esac
 done
 
+filter(){
+
+}
+
+# Default: Show all
 VAR=$(crictl ps -q)
 array=($VAR)
 for var in "${array[@]}"
