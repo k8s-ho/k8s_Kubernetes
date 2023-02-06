@@ -27,7 +27,7 @@ apt update
 ```
 __Install Docker:__    
 ```bash
-apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin   
+sudo apt-get -y containerd.io
 ```
 __Install jq:__  
 ```bash
