@@ -1,4 +1,25 @@
 #!/bin/bash
+
+# option description
+usage()
+{
+  echo "<options>"
+  echo "    -a     : Show all information."
+  echo "    -f     : Filter and Show. ./podLayerSummary.sh -f [Container ID]"
+  echo "    -h     : Show this message."
+  exit 100
+}
+
+# Run option 
+while getopts ah opts; do
+        case $opts in
+        a) showAll
+                ;;
+        h) usage
+                ;;
+        esac
+done
+
 VAR=$(crictl ps -q)
 array=($VAR)
 for var in "${array[@]}"
