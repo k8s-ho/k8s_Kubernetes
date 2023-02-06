@@ -13,7 +13,7 @@ chmod +x setup_layerSummary.sh
 ./layerSummary.sh
 
 <options>
- -a     : Show all information  ex) ./layerSummery.sh -a
+ -a     : Show all information(Data path, Layer info..)
  -h     : Show this message     ex) ./layerSummery.sh -h
 ```
 
