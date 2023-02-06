@@ -9,3 +9,16 @@ cat <<EOF > /etc/crictl.yaml
 runtime-endpoint: unix:///var/run/containerd/containerd.sock
 image-endpoint: unix:///var/run/containerd/containerd.sock 
 EOF
+
+
+sudo apt install jq
+sudo systemctl restart docker
+sudo chmod +x podLayerSummary.sh
+clear
+echo "[*] podLayerSummary setup installation is complete!! @IMyoungho"
+echo "[?] Usage: ./podLayerSummary.sh"
+echo "<options>"
+echo "    -a     : Show all information"
+echo "    -h     : Show this message."
+echo "------------------------------------------------------------"
+ls
