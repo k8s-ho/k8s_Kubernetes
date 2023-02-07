@@ -1,6 +1,13 @@
 # podLayerSummary.sh
   
-This is a tool that allows you to briefly check the data paths, PID information of Pod containers related to the container layer:)
+This is a tool that allows you to briefly check the data paths, PID information of Pod containers related to the container layer:)  
+You can see at a glance which directory in the overlay path is related to which container in which Pod.
+```bash    
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots
+```
+<img width="651" alt="스크린샷 2023-02-07 오후 2 38 59" src="https://user-images.githubusercontent.com/118821939/217158030-c394dcf7-2fdf-4f68-9519-930d437eb7e4.png">
+
+
 
 ---
 
