@@ -8,7 +8,7 @@ This is a tool that allows you to briefly check the data paths, PID information 
 ### Usage:  
 ```bash
 git clone https://github.com/k8s-ho/k8s_Kubernetes    
-cd k8s_Kubernetes/Tools/podLayerSummary
+cd k8s_Kubernetes/Tools/containerTools/podLayerSummary
 chmod +x setup_podLayerSummary.sh
 ./setup_podLayerSummary.sh 
 ./podLayerSummary.sh
