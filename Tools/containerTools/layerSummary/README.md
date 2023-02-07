@@ -7,7 +7,7 @@ This is a tool that allows you to briefly check the files, paths, and low-level 
 ### Usage:  
 ```bash
 git clone https://github.com/k8s-ho/k8s_Kubernetes    
-cd k8s_Kubernetes/Tools/containerTools  
+cd k8s_Kubernetes/Tools/containerTools/layerSummary
 chmod +x setup_layerSummary.sh
 ./setup_layerSummary.sh 
 ./layerSummary.sh
