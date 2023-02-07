@@ -12,7 +12,6 @@ EOF
 
 
 sudo apt install jq
-sudo systemctl restart docker
 sudo chmod +x podLayerSummary.sh
 clear
 echo "[*] podLayerSummary setup installation is complete!! @IMyoungho"
