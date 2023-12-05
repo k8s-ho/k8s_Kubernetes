@@ -9,7 +9,8 @@ I made it because I wanted to dump packets in kubernetes:)
 git clone https://github.com/k8s-ho/k8s_Kubernetes  
 cd k8s_Kubernetes/Tools/packetDump/   
 chmod +x setup_packetDump.sh  
-./setup_packetDump.sh && make  
+./setup_packetDump.sh && make
+chmod +x pcapDump
 ./pcapDump [interface]  
 ```
 
