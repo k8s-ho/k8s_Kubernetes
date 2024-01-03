@@ -33,7 +33,7 @@ __Update:__
 ```bash
 apt update   
 ```
-__Install Contianer Runtime:__    
+__Install Container Runtime:__    
 ```bash
 sudo apt-get -y containerd.io
 ```
